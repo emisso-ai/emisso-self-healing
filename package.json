@@ -1,0 +1,60 @@
+{
+  "name": "@emisso/self-healing",
+  "version": "0.1.0",
+  "description": "Self-healing SDK for Next.js + Supabase + Vercel applications — monitors, diagnoses, fixes, and notifies",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./edge-function": {
+      "import": "./dist/edge-function.js",
+      "require": "./dist/edge-function.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "tsc --noEmit",
+    "check": "tsc --noEmit && vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "zod": "^3.24.0"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/claude-agent-sdk": ">=0.1.0",
+    "@vercel/sandbox": ">=1.0.0",
+    "octokit": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/claude-agent-sdk": { "optional": true },
+    "@vercel/sandbox": { "optional": true },
+    "octokit": { "optional": true }
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.1.0",
+    "@vercel/sandbox": "^1.6.0",
+    "octokit": "^4.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.0.0",
+    "@slack/web-api": "^7.9.0"
+  },
+  "keywords": ["self-healing", "monitoring", "vercel", "supabase", "nextjs", "ai", "claude", "emisso"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emisso-ai/emisso-self-healing"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
