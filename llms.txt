@@ -1,0 +1,32 @@
+# @emisso/self-healing
+
+> Self-healing SDK for Next.js + Supabase + Vercel — monitors, diagnoses, fixes, and notifies.
+
+- Repo: https://github.com/emisso-ai/emisso-self-healing
+- License: MIT
+
+## Install
+
+npm install @emisso/self-healing
+
+## Docs
+
+- [README](https://github.com/emisso-ai/emisso-self-healing/blob/main/README.md)
+- [AGENTS.md](https://github.com/emisso-ai/emisso-self-healing/blob/main/AGENTS.md)
+
+## How it works
+
+Production Error → Vercel/Supabase log ingestion → Claude Agent SDK analysis → Vercel Sandbox testing → GitHub PR → Slack/Discord notification. Never auto-merges. Human approval required.
+
+## API
+
+- `HealingPipeline(config)` — Main orchestrator class
+- `parseVercelLogs(entries)` — Parse Vercel log drain webhook
+- `detectSlowQueries(config)` — Detect slow Supabase queries
+- `parseSupabaseWebhook(payload)` — Parse Supabase database webhook
+- `analyzeIssue(issue, config)` — AI-powered codebase analysis
+- `triageIssue(issue, config)` — Classify severity and decide action
+- `testFixInSandbox(analysis, config)` — Run fix in Vercel Sandbox
+- `createFixPR(analysis, testResult, config)` — Create GitHub PR
+- `notifyAll(notification, config)` — Send to all configured channels
+- `SelfHealingConfigSchema` — Zod schema for full configuration

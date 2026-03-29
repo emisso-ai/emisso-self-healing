@@ -1,0 +1,52 @@
+name: Bug Report
+description: Report a bug in @emisso/self-healing
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched for [existing issues](https://github.com/emisso-ai/emisso-self-healing/issues)
+          required: true
+        - label: I have read the [README](https://github.com/emisso-ai/emisso-self-healing/blob/main/README.md)
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal steps or code snippet to reproduce the issue.
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - "Pipeline (orchestration)"
+        - "Ingestion (Vercel/Supabase)"
+        - "Analysis (Claude)"
+        - "Sandbox (testing)"
+        - "Repair (GitHub PR)"
+        - "Notifications (Slack/Discord)"
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: "20.x"
