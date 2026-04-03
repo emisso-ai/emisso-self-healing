@@ -1,10 +1,79 @@
 {
+  "name": "@emisso/self-healing",
+  "version": "0.1.0",
+  "description": "Self-healing SDK for Next.js + Supabase + Vercel — monitors, diagnoses, fixes, and notifies",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./edge-function": {
+      "types": "./dist/edge-function.d.ts",
+      "import": "./dist/edge-function.js",
+      "require": "./dist/edge-function.cjs"
+    }
+  },
+  "files": ["dist"],
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm run build && changeset publish"
   },
+  "keywords": [
+    "self-healing",
+    "monitoring",
+    "auto-fix",
+    "vercel",
+    "supabase",
+    "nextjs",
+    "claude",
+    "ai",
+    "devops",
+    "sdk",
+    "typescript"
+  ],
+  "author": "Emisso <hello@emisso.ai>",
+  "license": "MIT",
+  "homepage": "https://github.com/emisso-ai/emisso-self-healing",
+  "bugs": {
+    "url": "https://github.com/emisso-ai/emisso-self-healing/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emisso-ai/emisso-self-healing"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/claude-agent-sdk": ">=0.1.0",
+    "@vercel/sandbox": ">=0.1.0",
+    "octokit": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/claude-agent-sdk": { "optional": true },
+    "@vercel/sandbox": { "optional": true },
+    "octokit": { "optional": true }
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.30.0"
+    "@changesets/cli": "^2.30.0",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
   }
 }
