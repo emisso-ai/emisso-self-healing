@@ -73,7 +73,7 @@
     "@changesets/cli": "^2.30.0",
     "@types/node": "^22.0.0",
     "tsup": "^8.3.0",
-    "typescript": "^5.7.0",
+    "typescript": "^6.0.3",
     "vitest": "^3.0.0"
   }
 }
